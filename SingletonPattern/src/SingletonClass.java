@@ -2,6 +2,7 @@ public class SingletonClass {
     public static SingletonClass captain;
     private static String captainname;
 
+    //private constructor to protect the use of new keyword
     private SingletonClass() {
     }
 
