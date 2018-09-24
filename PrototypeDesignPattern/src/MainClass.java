@@ -3,9 +3,9 @@ public class MainClass {
         String hostname="tigerscott";
         int portname=8080;
         String servername="Linux";
-        boolean Isconnection=true;
-        DatabaseConnection connection=new DatabaseConnection(hostname,portname,servername,Isconnection);
-        connection.setNameconnection(Isconnection);
+        boolean requireconnection=true;
+        DatabaseConnection connection=new DatabaseConnection(hostname,portname,servername,requireconnection);
+        connection.setRequireconnection(requireconnection);
 
 
         Thread.sleep(6000);
@@ -19,7 +19,7 @@ public class MainClass {
         //if it return false that means connection already establish and we don't need to make a connection again
         //which take the 10 or more second
         //and if it return true that means database connection not establish
-        System.out.println("RequireConnection "+connection1.isNameconnection());
+        System.out.println("RequireConnection "+connection1.getRequireConnection());
         connection1.setServername("Red hut Linux");
         System.out.println("Change Server Name "+connection.getServername());
         System.out.println("--------------------------------------------------------------");
@@ -33,7 +33,7 @@ public class MainClass {
         //if it return false that means connection already establish and we don't need to make a connection again
         //which take the 10 or more second
         //and if it return true that means database connection not establish
-        System.out.println("RequireConnection "+connection2.isNameconnection());
+        System.out.println("RequireConnection "+connection2.getRequireConnection());
         connection2.setServername("Windows");
         System.out.println("Change Server Name "+connection.getServername());
         System.out.println("--------------------------------------------------------------");

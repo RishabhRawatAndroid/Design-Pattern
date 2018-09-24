@@ -3,13 +3,13 @@ public class DatabaseConnection implements DeepCopyClone,ShallowCopyClone {
     private String hostname;
     private int portname;
     private String servername;
-    private boolean nameconnection;
+    private boolean requireconnection;
 
-    public DatabaseConnection(String hostname, int portname, String servername,boolean nameconnection) {
+    public DatabaseConnection(String hostname, int portname, String servername,boolean requireconnection) {
         this.hostname = hostname;
         this.portname = portname;
         this.servername = servername;
-        this.nameconnection=nameconnection;
+        this.requireconnection=requireconnection;
     }
 
     public String getHostname() {
@@ -36,13 +36,12 @@ public class DatabaseConnection implements DeepCopyClone,ShallowCopyClone {
         this.servername = servername;
     }
 
-    public boolean isNameconnection() {
-        return nameconnection;
+    public boolean getRequireConnection() {
+        return requireconnection;
     }
 
-    public void setNameconnection(boolean connection) {
-        this.nameconnection=connection;
-        Thread thread;
+    public void setRequireconnection(boolean connection) {
+        this.requireconnection=connection;
         if(connection==true)
         {
             new Thread(() -> {
@@ -54,7 +53,7 @@ public class DatabaseConnection implements DeepCopyClone,ShallowCopyClone {
                         System.out.println("Make Connection "+i);
                     }
                     System.out.println("Connection Successfully establish");
-                    nameconnection=false;
+                    requireconnection=false;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -65,7 +64,7 @@ public class DatabaseConnection implements DeepCopyClone,ShallowCopyClone {
 
     @Override
     public Object deepCloneCopy() throws CloneNotSupportedException{
-       return new DatabaseConnection(this.hostname,this.portname,this.servername,this.nameconnection);
+       return new DatabaseConnection(this.hostname,this.portname,this.servername,this.requireconnection);
     }
 
     @Override
